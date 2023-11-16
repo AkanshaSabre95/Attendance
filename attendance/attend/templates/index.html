@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+</head>
+<body>
+    <h1>Your Model Data</h1>
+<ul>
+    <h1>Attendance</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Week Commencing</th>
+                <th>WeekDay</th>
+                <th>Class Name</th>
+                <th>Status</th>
+                <th>Present</th>
+                <th>Absent</th>
+                <th>Late</th>
+                <th>Instructor</th>
+                <th>Button Click</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+                <tr>
+                    <td>{{ item.student_name }}</td>
+                    <td>{{ item.week_commencing }}</td>
+                    <td>{{ item.weekday }}</td>
+                    <td>{{ item.class_name }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>{{ item.days_present }}</td>
+                    <td>{{ item.days_absent }}</td>
+                    <td>{{ item.days_late }}</td>
+                    <td>{{ item.instructor }}</td>
+                    <td>{{ item.automation_button_clicked }}</td>
+                    
+                              
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+<script>
+    document.getElementById('automation-button').addEventListener('click', function () {
+        document.querySelector('form').submit();
+    });
+</script>
+</ul>
+</body>
+</html>
